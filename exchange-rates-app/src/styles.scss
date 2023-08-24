@@ -1,0 +1,21 @@
+/* You can add gl/* Circular checkboxes */
+.checkbox-label input[type="checkbox"] {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  border-radius: 50%; /* Make the checkbox circular */
+  border: 2px solid #000000; /* Border color for the checkbox */
+  margin-right: 10px; /* Spacing between checkbox and label */
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: #007bff; /* Background color when checked */
+  border: 2px solid #007bff; /* Border color when checked */
+  border-radius: 50%; /* Make the checkbox circular when checked */
+}
+
+/* Grey label text for Currency */
+.currency-label {
+  margin-top: 2px; /* Adjust vertical alignment as needed */
+  color: #666; /* Grey color for the label */
+}
