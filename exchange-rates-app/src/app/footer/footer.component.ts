@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   trigger,
@@ -7,6 +7,8 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { CurrencyService } from '../services/currency.service';
+import { ICurrency } from '../models/currency.model';
 
 @Component({
   selector: 'app-footer',
@@ -19,31 +21,32 @@ import {
     ]),
   ],
 })
-export class FooterComponent {
-  isDropdownOpen = false;
+export class FooterComponent implements OnInit {
   buttonState: string; // Add buttonState property for animation
 
   // Define your list of currencies
-  currencies = [
-    { name: 'EGP', selected: false },
-    { name: 'USD', selected: false },
-    { name: 'CAD', selected: false },
-    { name: 'SAR', selected: false },
-    { name: 'GBP', selected: false },
-  ];
+  currencies: ICurrency[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private currencyService: CurrencyService) {
     this.buttonState = 'normal'; // Initialize buttonState
   }
 
-  // Function to toggle the dropdown
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
+  ngOnInit(): void {
+    this.getCurrencies();
   }
+
+
+  getCurrencies() {
+    this.currencyService.getCurrencies().subscribe({
+      next: (res) => {
+        this.currencies = res;
+      }
+    })
+  }
+
 
   // Function to handle the button click
   handleButtonClick() {
-    this.toggleDropdown(); // Toggle the dropdown
     this.buttonState = 'clicked'; // Trigger button animation
     setTimeout(() => {
       this.router.navigate(['None']); // Navigate to "None" after a delay for animations
