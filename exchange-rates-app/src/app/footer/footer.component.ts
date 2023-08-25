@@ -47,6 +47,7 @@ export class FooterComponent implements OnInit {
 
   // Function to handle the button click
   handleButtonClick() {
+    console.log(this.currencies);
     this.buttonState = 'clicked'; // Trigger button animation
     setTimeout(() => {
       this.router.navigate(['None']); // Navigate to "None" after a delay for animations
