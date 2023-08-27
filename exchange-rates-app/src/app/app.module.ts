@@ -5,13 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
 import { AddToFavComponent } from './add-to-fav/add-to-fav.component';
+import { LiveExchangeRatesComponent } from './live-exchange-rates/live-exchange-rates.component';
+import { PortfolioCardComponent } from './live-exchange-rates/portfolio-card/portfolio-card.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, AddToFavComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  declarations: [
+    AppComponent,
+    AddToFavComponent,
+    LiveExchangeRatesComponent,
+    PortfolioCardComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
